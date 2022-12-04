@@ -1,3 +1,10 @@
+const display = document.querySelector('.display');
+const digits = document.querySelectorAll('.digit');
+const operators = document.querySelectorAll('.operation');
+let Value1 = 0;
+let Value2 = 0;
+let func = 0;
+
 let add = (a, b) => {
     return a + b;
 };
@@ -5,10 +12,6 @@ let add = (a, b) => {
 let subtract = (a, b) => {
     return a - b;
 };
-
-const display = document.querySelector('.display');
-const digits = document.querySelectorAll('.digit'); 
-let displayValue = 0;
 
 let multiply = (a, b) => {
     return a * b;
@@ -26,8 +29,18 @@ let operate = (func, a, b) => {
 };
 
 digits.forEach(digit => digit.addEventListener('click', () => {
-    console.log(digit.textContent)
     if (display.textContent == 0) display.textContent = '';
+    if (func && Value2 == 0) display.textContent = '';
+    if (func) {
+        display.textContent += digit.textContent;
+        Value2 += digit.textContent;
+        return;
+    };
     display.textContent += digit.textContent;
-    displayValue += digit.textContent;
+    Value1 += digit.textContent;
+}));
+
+operators.forEach(operator => operator.addEventListener('click', () => {
+    console.log(operator.textContent);
+    func = operator.textContent;
 }));
