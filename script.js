@@ -2,12 +2,13 @@ const display = document.querySelector('.display');
 const digits = document.querySelectorAll('.digit');
 const operators = document.querySelectorAll('.operation');
 const clear = document.querySelector('.clear');
+const calculate = document.querySelector('#equals')
 let Value1 = 0;
 let Value2 = 0;
 let func = 0;
 
 let add = (a, b) => {
-    return a + b;
+    return parseInt(a) + parseInt(b);
 };
 
 let subtract = (a, b) => {
@@ -23,10 +24,10 @@ let divide = (a, b) => {
 };
 
 let operate = (func, a, b) => {
-    if (func == 'add') return add(a, b);
-    if (func == 'subtract') return subtract(a, b);
-    if (func == 'multiply') return multiply(a, b);
-    if (func == 'divide') return divide(a, b);
+    if (func == '+') return add(a, b);
+    if (func == '-') return subtract(a, b);
+    if (func == 'x') return multiply(a, b);
+    if (func == '÷') return divide(a, b);
 };
 
 digits.forEach(digit => digit.addEventListener('click', () => {
@@ -52,3 +53,8 @@ clear.addEventListener('click', () => {
     func = 0;
     display.textContent = 0;
 });
+
+calculate.addEventListener('click', () => {
+    display.textContent = operate(func, Value1, Value2);
+    Value1 = operate(func, Value1, Value2);
+})
