@@ -1,6 +1,7 @@
 const display = document.querySelector('.display');
 const digits = document.querySelectorAll('.digit');
 const operators = document.querySelectorAll('.operation');
+const clear = document.querySelector('.clear');
 let Value1 = 0;
 let Value2 = 0;
 let func = 0;
@@ -44,3 +45,10 @@ operators.forEach(operator => operator.addEventListener('click', () => {
     console.log(operator.textContent);
     func = operator.textContent;
 }));
+
+clear.addEventListener('click', () => {
+    Value1 = 0;
+    Value2 = 0;
+    func = 0;
+    display.textContent = 0;
+});
