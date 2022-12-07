@@ -39,8 +39,13 @@ let operate = (func, a, b) => {
         result = tempResult / 10000000;
     };
     if (result < 0.000001 && result !== 0) {
+        if ((result + 0.000001) < 0) {
+            Value2New = 0;
+            return [result, Value2New];
+        }   else {
         Value1 = "ERROR";
         return ["ERROR", Value1, clearData(0)];
+        };
     };
     console.log(result.length);
     Value2New = 0;
