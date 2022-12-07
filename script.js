@@ -27,6 +27,7 @@ let divide = (a, b) => {
 
 let operate = (func, a, b) => {
     console.log(func, a, b);
+    if (Value1 == "ERROR" || Value2 == "ERROR") return ["ERROR", clearData(0)];
     if (func == '+') result = add(a, b);
     if (func == '-') result = subtract(a, b);
     if (func == 'x') result = multiply(a, b);
@@ -37,17 +38,22 @@ let operate = (func, a, b) => {
         tempResult = Math.round(result * 10000000);
         result = tempResult / 10000000;
     };
-    if (result < 0.000001) return ["ERROR", clearData(0)];
+    if (result < 0.000001 && result !== 0) {
+        Value1 = "ERROR";
+        return ["ERROR", Value1, clearData(0)];
+    };
     console.log(result.length);
     Value2New = 0;
     return [result, Value2New];
 };
 
 let clearData = (a) => {
-    if (a == 0) {
+    if (!a) {
         display.textContent = "ERROR";
     }   else display.textContent = 0;
-    Value1 = 0;
+    if (Value1 == "ERROR" && !a) {
+        Value1;
+    }   else Value1 = 0;
     Value2 = 0;
     func = 0;
     result = 0;
@@ -57,6 +63,7 @@ let clearData = (a) => {
 digits.forEach(digit => digit.addEventListener('click', () => {
     console.log(Value1);
     console.log(Value2);
+    if (Value1 == "ERROR" || Value2 == "ERROR") return ["ERROR", clearData(0)];
     if (display.textContent == 0) display.textContent = '';
     if (func && Value2 == '') display.textContent = '';
     if (func && !Value2New) {
