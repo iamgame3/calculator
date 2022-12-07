@@ -30,6 +30,7 @@ let operate = (func, a, b) => {
     if (func == '+') result = add(a, b);
     if (func == '-') result = subtract(a, b);
     if (func == 'x') result = multiply(a, b);
+    if (func == '÷' && Value2 == 0) return ["ERROR", clearData()];
     if (func == '÷') result = divide(a, b);
     // Length greater than 9 and actual number greater than 999999999
     if (result > 999999999) return ["ERROR", clearData()];
