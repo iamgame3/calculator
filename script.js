@@ -31,6 +31,7 @@ let operate = (func, a, b) => {
     if (func == '-') result = subtract(a, b);
     if (func == 'x') result = multiply(a, b);
     if (func == '÷') result = divide(a, b);
+    // Length greater than 9 and actual number greater than 999999999
     Value2New = 0;
     return [result, Value2New];
 };
@@ -63,6 +64,9 @@ operators.forEach(operator => operator.addEventListener('click', () => {
         display.textContent = (operate(func, Value1, Value2))[0];
         Value1 = (operate(func, Value1, Value2))[0];
         return;
+    };
+    if (func && Value1 && Value2 && Value2New == 0) {
+        return func = operator.textContent;
     };
     if (func && Value1 && Value2) {
         display.textContent = (operate(func, Value1, Value2))[0];
