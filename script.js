@@ -32,8 +32,19 @@ let operate = (func, a, b) => {
     if (func == 'x') result = multiply(a, b);
     if (func == '÷') result = divide(a, b);
     // Length greater than 9 and actual number greater than 999999999
+    if (result > 999999999) return ["ERROR", clearData()];
+    // if (result.length > 9)
     Value2New = 0;
     return [result, Value2New];
+};
+
+let clearData = () => {
+    Value1 = 0;
+    Value2 = 0;
+    func = 0;
+    result = 0;
+    Value2New = 0;
+    display.textContent = 0;
 };
 
 digits.forEach(digit => digit.addEventListener('click', () => {
@@ -76,14 +87,7 @@ operators.forEach(operator => operator.addEventListener('click', () => {
     func = operator.textContent;
 }));
 
-clear.addEventListener('click', () => {
-    Value1 = 0;
-    Value2 = 0;
-    func = 0;
-    result = 0;
-    Value2New = 0;
-    display.textContent = 0;
-});
+clear.addEventListener('click', clearData);
 
 calculate.addEventListener('click', () => {
     display.textContent = (operate(func, Value1, Value2))[0];
