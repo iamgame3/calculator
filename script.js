@@ -41,6 +41,7 @@ let operate = (func, a, b) => {
     if (func == 'x') result = multiply(a, b);
     if (func == '÷' && Value2 == 0) return ["ERROR", clearData(0)];
     if (func == '÷') result = divide(a, b);
+    if (!result && result !== 0) return ["ERROR", clearData(0)];
     if (result > 999999999) return ["ERROR", clearData(0)];
     if (result < 0.000001 && result !== 0) {
         if ((result + 0.000001) < 0) {
