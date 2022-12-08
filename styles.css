@@ -25,12 +25,16 @@
 }
 
 .clear {
-    width: 560px;
+    width: 272px;
     height: 64px;
     margin-left: 8px;
-    margin-right: 8px;
+    margin-right: 4px;
     margin-bottom: 8px;
     font-size: 24px;
+}
+
+#delete {
+    margin-right: 4px;
 }
 
 .display {
