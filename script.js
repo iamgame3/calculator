@@ -11,7 +11,7 @@ let func = 0;
 let Value2New = 0;
 
 let add = (a, b) => {
-    return parseInt(a) + parseInt(b);
+    return parseFloat(a) + parseFloat(b);
 };
 
 let subtract = (a, b) => {
@@ -96,6 +96,12 @@ digits.forEach(digit => digit.addEventListener('click', () => {
             display.textContent = tempResultFixed;
             Value2 = display.textContent;
         };
+        decimalCheck = display.textContent.split('.').length - 1;
+        if (decimalCheck > 1) {
+            tempResultFixed = display.textContent.slice(0, -1);
+            display.textContent = tempResultFixed;
+            Value2 = display.textContent;
+        };
         console.log("Hello");
         return;
     };
@@ -106,6 +112,13 @@ digits.forEach(digit => digit.addEventListener('click', () => {
         tempResultFixed = display.textContent.slice(0, 9);
         display.textContent = tempResultFixed;
         Value1 = display.textContent;
+    };
+    decimalCheck = display.textContent.split('.').length - 1;
+    console.log(decimalCheck);
+    if (decimalCheck > 1) {
+        tempResultFixed = display.textContent.slice(0, -1);
+        display.textContent = tempResultFixed;
+        Value2 = display.textContent;
     };
 }));
 
