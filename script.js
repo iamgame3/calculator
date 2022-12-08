@@ -3,8 +3,9 @@ const digits = document.querySelectorAll('.digit');
 const operators = document.querySelectorAll('.operation');
 const clear = document.querySelector('.clear');
 const calculate = document.querySelector('#equals')
+const del = document.querySelector('#delete');
 let result = 0;
-let Value1 = 0;
+let Value1 = '';
 let Value2 = '';
 let func = 0;
 let Value2New = 0;
@@ -27,17 +28,20 @@ let divide = (a, b) => {
 
 let operate = (func, a, b) => {
     console.log(func, a, b);
-    if (Value1 == "ERROR" || Value2 == "ERROR") return ["ERROR", clearData(0)];
+    if (Value1 == "ERROR" || Value2 == "ERROR" || display.textContent == "ERROR") return ["ERROR", clearData(0)];
+    if (!func) {
+        if (Value1 == '') {
+            Value1 = 0
+            return [Value1, Value2New];
+        }   else return [Value1, Value2New];
+    };
+    if (Value2 == '') return ["ERROR", clearData(0)];
     if (func == '+') result = add(a, b);
     if (func == '-') result = subtract(a, b);
     if (func == 'x') result = multiply(a, b);
     if (func == '÷' && Value2 == 0) return ["ERROR", clearData(0)];
     if (func == '÷') result = divide(a, b);
     if (result > 999999999) return ["ERROR", clearData(0)];
-    if (result.toString().length > 9) {
-        tempResult = Math.round(result * 10000000);
-        result = tempResult / 10000000;
-    };
     if (result < 0.000001 && result !== 0) {
         if ((result + 0.000001) < 0) {
             Value2New = 0;
@@ -46,6 +50,11 @@ let operate = (func, a, b) => {
         Value1 = "ERROR";
         return ["ERROR", Value1, clearData(0)];
         };
+    };
+    if ((result.toString()).length > 9) {
+        tempResult = result.toString()
+        tempResultFixed = tempResult.slice(0, 9);
+        result = parseFloat(tempResultFixed);
     };
     console.log(result.length);
     Value2New = 0;
@@ -58,8 +67,8 @@ let clearData = (a) => {
     }   else display.textContent = 0;
     if (Value1 == "ERROR" && !a) {
         Value1;
-    }   else Value1 = 0;
-    Value2 = 0;
+    }   else Value1 = '';
+    Value2 = '';
     func = 0;
     result = 0;
     Value2New = 0;
@@ -68,7 +77,7 @@ let clearData = (a) => {
 digits.forEach(digit => digit.addEventListener('click', () => {
     console.log(Value1);
     console.log(Value2);
-    if (Value1 == "ERROR" || Value2 == "ERROR") return ["ERROR", clearData(0)];
+    if (Value1 == "ERROR" || Value2 == "ERROR" || display.textContent == "ERROR") return ["ERROR", clearData(0)];
     if (display.textContent == 0) display.textContent = '';
     if (func && Value2 == '') display.textContent = '';
     if (func && !Value2New) {
@@ -78,6 +87,7 @@ digits.forEach(digit => digit.addEventListener('click', () => {
         Value2New = 1;
         return;
     }
+    if (display.textContent == 0 && !Value1) Value1 = '';
     if (func) {
         display.textContent += digit.textContent;
         Value2 += digit.textContent;
@@ -113,4 +123,19 @@ clear.addEventListener('click', () => {
 calculate.addEventListener('click', () => {
     display.textContent = (operate(func, Value1, Value2))[0];
     Value1 = (operate(func, Value1, Value2))[0];
+});
+
+del.addEventListener('click', () => {
+    if (display.textContent == "ERROR") return;
+    if (Value2New = 1 && Value2) {
+        display.textContent = Value2.slice(0, -1);
+        Value2 = display.textContent;
+        if (display.textContent == '') display.textContent = 0;
+        return;
+    } else if (Value1 == display.textContent) {
+        display.textContent = Value1.slice(0, -1);
+        Value1 = display.textContent;
+        if (display.textContent == '') display.textContent = 0;
+        return;
+    };
 });
