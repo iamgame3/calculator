@@ -91,12 +91,22 @@ digits.forEach(digit => digit.addEventListener('click', () => {
     if (func) {
         display.textContent += digit.textContent;
         Value2 += digit.textContent;
+        if (display.textContent.length > 9) {
+            tempResultFixed = display.textContent.slice(0, 9);
+            display.textContent = tempResultFixed;
+            Value2 = display.textContent;
+        };
         console.log("Hello");
         return;
     };
     console.log("Greetings");
     display.textContent += digit.textContent;
     Value1 += digit.textContent;
+    if (display.textContent.length > 9) {
+        tempResultFixed = display.textContent.slice(0, 9);
+        display.textContent = tempResultFixed;
+        Value1 = display.textContent;
+    };
 }));
 
 operators.forEach(operator => operator.addEventListener('click', () => {
