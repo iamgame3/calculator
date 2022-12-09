@@ -79,7 +79,7 @@ digits.forEach(digit => digit.addEventListener('click', () => {
     console.log(Value1);
     console.log(Value2);
     if (Value1 == "ERROR" || Value2 == "ERROR" || display.textContent == "ERROR") return ["ERROR", clearData(0)];
-    if (display.textContent == 0) display.textContent = '';
+    if (display.textContent === '0') display.textContent = '';
     if (func && Value2 == '') display.textContent = '';
     if (func && !Value2New) {
         display.textContent = digit.textContent;
@@ -107,6 +107,12 @@ digits.forEach(digit => digit.addEventListener('click', () => {
         return;
     };
     console.log("Greetings");
+    if (digit.textContent == 0 && (display.textContent === '0' || display.textContent == '')) {
+        display.textContent = digit.textContent;
+        Value1 = '';
+        return;
+    };
+    console.log('Good Day')
     display.textContent += digit.textContent;
     Value1 += digit.textContent;
     if (display.textContent.length > 9) {
