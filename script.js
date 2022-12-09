@@ -188,10 +188,12 @@ del.addEventListener('click', () => {
 
 sign.addEventListener('click', () => {
     if (display.textContent == "ERROR") return;
-    if (display.textContent == Value1) {
+    tempValue1 = '0' + Value1;
+    tempValue2 = '0' + Value2;
+    if (display.textContent == tempValue1 || display.textContent == Value1) {
         Value1 *= -1;
         display.textContent = Value1;
-    }   else if (display.textContent == Value2) {
+    }   else if (display.textContent == tempValue2 || display.textContent == Value2) {
         Value2 *= -1;
         display.textContent = Value2;
     };
