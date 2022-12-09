@@ -90,7 +90,11 @@ digits.forEach(digit => digit.addEventListener('click', () => {
     }
     if (display.textContent == 0 && !Value1) Value1 = '';
     if (func) {
+        if (digit.textContent == '.' && (display.textContent === '0' || display.textContent == '')) {
+            display.textContent = '0.';
+        }   else {
         display.textContent += digit.textContent;
+        };
         Value2 += digit.textContent;
         if (display.textContent.length > 9) {
             tempResultFixed = display.textContent.slice(0, 9);
@@ -113,7 +117,11 @@ digits.forEach(digit => digit.addEventListener('click', () => {
         return;
     };
     console.log('Good Day')
+    if (digit.textContent == '.' && (display.textContent === '0' || display.textContent == '')) {
+        display.textContent = '0.';
+    }   else {
     display.textContent += digit.textContent;
+    };
     Value1 += digit.textContent;
     if (display.textContent.length > 9) {
         tempResultFixed = display.textContent.slice(0, 9);
