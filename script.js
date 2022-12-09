@@ -33,7 +33,7 @@ let operate = (func, a, b) => {
         if (Value1 == '') {
             Value1 = 0
             return [Value1, Value2New];
-        }   else return [Value1, Value2New];
+        }   else return [display.textContent, Value2New];
     };
     if (Value2 == '') return ["ERROR", clearData(0)];
     if (func == '+') result = add(a, b);
@@ -90,7 +90,7 @@ digits.forEach(digit => digit.addEventListener('click', () => {
     }
     if (display.textContent == 0 && !Value1) Value1 = '';
     if (func) {
-        if (digit.textContent == '.' && (display.textContent === '0' || display.textContent == '')) {
+        if (digit.textContent == '.' && (display.textContent === '0' || display.textContent == '' || Value2 == '')) {
             display.textContent = '0.';
         }   else {
         display.textContent += digit.textContent;
