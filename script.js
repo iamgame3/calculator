@@ -4,6 +4,7 @@ const operators = document.querySelectorAll('.operation');
 const clear = document.querySelector('.clear');
 const calculate = document.querySelector('#equals')
 const del = document.querySelector('#delete');
+const sign = document.querySelector('#sign');
 let result = 0;
 let Value1 = '';
 let Value2 = '';
@@ -175,5 +176,16 @@ del.addEventListener('click', () => {
         Value1 = display.textContent;
         if (display.textContent == '') display.textContent = 0;
         return;
+    };
+});
+
+sign.addEventListener('click', () => {
+    if (display.textContent == "ERROR") return;
+    if (display.textContent == Value1) {
+        Value1 *= -1;
+        display.textContent = Value1;
+    }   else if (display.textContent == Value2) {
+        Value2 *= -1;
+        display.textContent = Value2;
     };
 });
