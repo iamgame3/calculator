@@ -44,15 +44,22 @@ let operate = (func, a, b) => {
     if (func == '÷') result = divide(a, b);
     if (!result && result !== 0) return ["ERROR", clearData(0)];
     if (result > 999999999) return ["ERROR", clearData(0)];
+    console.log('boom');
     if (result < 0.000001 && result !== 0) {
         if ((result + 0.000001) < 0) {
             Value2New = 0;
+            if ((result.toString()).length > 9) {
+                tempResult = result.toString()
+                tempResultFixed = tempResult.slice(0, 9);
+                result = parseFloat(tempResultFixed);
+            };
             return [result, Value2New];
         }   else {
         Value1 = "ERROR";
         return ["ERROR", Value1, clearData(0)];
         };
     };
+    console.log('boom');
     if ((result.toString()).length > 9) {
         tempResult = result.toString()
         tempResultFixed = tempResult.slice(0, 9);
