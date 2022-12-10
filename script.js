@@ -42,13 +42,13 @@ let operate = (func, a, b) => {
     if (func == '÷' && Value2 == 0) return ["ERROR", clearData(0)];
     if (func == '÷') result = divide(a, b);
     if (!result && result !== 0) return ["ERROR", clearData(0)];
-    if (result > 999999999) return ["ERROR", clearData(0)];
+    if (result > 9999999) return ["ERROR", clearData(0)];
     if (result < 0.000001 && result !== 0) {
         if ((result + 0.000001) < 0) {
             Value2New = 0;
-            if ((result.toString()).length > 9) {
+            if ((result.toString()).length > 7) {
                 tempResult = result.toString()
-                tempResultFixed = tempResult.slice(0, 9);
+                tempResultFixed = tempResult.slice(0, 7);
                 result = parseFloat(tempResultFixed);
             };
             return [result, Value2New];
@@ -57,9 +57,9 @@ let operate = (func, a, b) => {
         return ["ERROR", Value1, clearData(0)];
         };
     };
-    if ((result.toString()).length > 9) {
+    if ((result.toString()).length > 7) {
         tempResult = result.toString()
-        tempResultFixed = tempResult.slice(0, 9);
+        tempResultFixed = tempResult.slice(0, 7);
         result = parseFloat(tempResultFixed);
     };
     Value2New = 0;
@@ -85,8 +85,8 @@ let digitPress = (a) => {
         display.textContent += a;
         };
         Value2 += a;
-        if (display.textContent.length > 9) {
-            tempResultFixed = display.textContent.slice(0, 9);
+        if (display.textContent.length > 7) {
+            tempResultFixed = display.textContent.slice(0, 7);
             display.textContent = tempResultFixed;
             Value2 = display.textContent;
         };
@@ -109,8 +109,8 @@ let digitPress = (a) => {
     display.textContent += a;
     };
     Value1 += a;
-    if (display.textContent.length > 9) {
-        tempResultFixed = display.textContent.slice(0, 9);
+    if (display.textContent.length > 7) {
+        tempResultFixed = display.textContent.slice(0, 7);
         display.textContent = tempResultFixed;
         Value1 = display.textContent;
     };
@@ -208,10 +208,10 @@ sign.addEventListener('click', signChange);
 
 document.addEventListener('keydown', (event) => {
     key = event.key;
+    if (key == 'Enter' || key == ' ') event.preventDefault();
     if (key == 'End') clearData(1);
     if (display.textContent == "ERROR") return;
     if (key == ' ') return;
-    if (key == 'Enter' || key == ' ') event.preventDefault();
     if (isNaN(key) == false || key == '.') digitPress(key);
     if (key == '+' || key == '-' || key == 'x' || key == '*' || key == '/') operatorPress(key);
     if (key == 'Enter' || key == '=') calculation();

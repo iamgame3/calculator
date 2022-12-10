@@ -5,9 +5,10 @@
 
 .calculator {
     margin-top: 128px;
-    width: 576px;
-    padding: 32px;
-    background-color: #161255;
+    width: 450px;
+    padding: 16px;
+    background-color: #353535;
+    border-radius: 8px;
 }
 
 .main {
@@ -15,34 +16,80 @@
     flex-wrap: wrap;
 }
 
+button {
+    border: 0px;
+    border-radius: 4px;
+}
+
 .digit,
 .operation,
 .special {
-    width: 128px;
+    width: 104px;
     height: 64px;
-    margin: 8px;
+    margin: 4px;
     font-size: 24px;
+}
+
+.digit {
+    background-color: #b9b9b9;
+}
+
+.digit:active {
+    background-color: #eeeeee;
+}
+
+.operation {
+    background-color: #32ff32;
+}
+
+.operation:active {
+    background-color: #86fd86
+}
+
+#equals {
+    background-color: #3694ff;
+}
+
+#equals:active {
+    background-color: #72b4ff;
 }
 
 .clear {
-    width: 272px;
+    width: 216px;
     height: 64px;
-    margin-left: 8px;
-    margin-right: 4px;
-    margin-bottom: 8px;
+    margin-left: 4px;
+    margin-bottom: 4px;
     font-size: 24px;
+    background-color: #ff3c3c;
+}
+
+.clear:active {
+    background-color: #ff7c7c;
+}
+
+#sign {
+    background-color: #ff3c3c;
+}
+
+#sign:active {
+    background-color: #ff7c7c;
 }
 
 #delete {
-    margin-right: 4px;
+    margin-right: 0;
+    background-color: #ff3c3c;
+}
+
+#delete:active {
+    background-color: #ff7c7c;
 }
 
 .display {
     display: flex;
-    width: 544px;
+    width: 424px;
     height: 124px;
-    margin: 8px;
-    margin-bottom: 32px;
+    margin: 4px;
+    margin-bottom: 16px;
     margin-top: 0;
     padding-right: 8px;
     padding-left: 8px;
@@ -51,4 +98,5 @@
     justify-content: end;
     align-items: center;
     color: #ffffff;
+    border-radius: 4px;
 }
