@@ -213,7 +213,7 @@ document.addEventListener('keydown', (event) => {
     if (key == ' ') return;
     if (key == 'Enter' || key == ' ') event.preventDefault();
     if (isNaN(key) == false || key == '.') digitPress(key);
-    if (key == '+' || key == '-' || key == '*' || key == '/') operatorPress(key);
+    if (key == '+' || key == '-' || key == 'x' || key == '*' || key == '/') operatorPress(key);
     if (key == 'Enter' || key == '=') calculation();
     if (key == 'Backspace' || key == 'Delete') deletion();
     if (key == 'Insert') signChange();
