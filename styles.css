@@ -21,6 +21,10 @@ button {
     border-radius: 4px;
 }
 
+button:focus-visible {
+    outline: none;
+}
+
 .digit,
 .operation,
 .special {
